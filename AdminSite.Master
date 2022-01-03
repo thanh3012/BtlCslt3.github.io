@@ -1,0 +1,227 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AdminSite.master.cs" Inherits="WebDongHo.AdminSite" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="Style.css" rel="stylesheet" />
+</head>
+<body>
+    <form id="form1" runat="server">
+    <table class="Main">
+        <tr>
+            <td colspan="2"></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <br />
+                <div class="container">
+                    <div class="menu">
+                        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                            <div class="container-fluid">
+
+                                <div class="navbar-header d-flex align-items-center mx-0 position-relative">
+                                    <a class="d-flex align-items-center p-0 mr-3">
+                                        <img src="HinhAnh/logo.jpg" alt="Hình ảnh trong HTML" width="80" height="80" /></a>
+                                </div>
+
+                                &nbsp; &ensp;
+                    <a class="navbar-brand" href="ListDongHo.aspx">Danh mục đồng hồ</a>
+                               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+
+                                 <a class="navbar-brand" href="ThemDH.aspx">Thêm đồng hồ</a>
+                               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+
+                                 <a class="navbar-brand" href="SuaDH.aspx">Sửa thông tin đồng hồ</a>
+                               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                                    <a class="navbar-brand" href="DoiMatKhauAdmin.aspx">Đổi mật khẩu</a>
+                               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                                 <a class="navbar-brand" href="DoiThongTin.aspx">Thay đổi thông tin</a>
+                               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                                <asp:LinkButton ID="lblDangxuat" runat="server" OnClick="lblDangxuat_Click">Đăng xuất</asp:LinkButton>
+                               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                               
+                                <!--<div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" aria-current="page" href="#">Thêm đồng hồ</a>
+                                        </li>
+
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">SẢN PHẨM
+                                            </a>
+                                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                <li><a class="dropdown-item" href="#">Sửa anh mục</a></li>
+                                                <li><a class="dropdown-item" href="#">ĐỒNG HỒ THỜI TRANG</a></li>
+
+                                            </ul>
+                                        </li>-->
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="LienHe.aspx">LIÊN HỆ</a>
+                                        </li>
+
+                                    </ul>
+                                   <!-- <form class="d-flex">
+                                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                        <button class="btn btn-outline-success" type="submit">Search</button>
+                                    </form>-->
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </td>
+
+        </tr>
+
+        <tr>
+            <td colspan="2">Số lượt truy cập:<asp:Label ID="lblLoginCount" runat="server" Text="0"></asp:Label>
+                <br />
+                Số lượt online:<asp:Label ID="lblOnline" runat="server" Text="0"></asp:Label>
+                <br />
+                Bạn đang đăng nhập với tài khoản:<asp:Label ID="lblTaiKhoan" runat="server"></asp:Label>
+            </td>
+        </tr>
+        <tr>
+            <td style='width: 15%; height: auto'>
+
+                <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
+                    <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+                        <svg class="bi me-2" width="40" height="32">
+                            <use xlink:href="#bootstrap"></use></svg>
+                        <span class="fs-4">DANH MỤC</span>
+                    </a>
+                    <hr>
+                    <ul class="nav nav-pills flex-column mb-auto">
+                        <li class="nav-item">
+                            <a href="https://localhost:44378/Index1.aspx" class="nav-link active" aria-current="page">
+                                <svg class="bi me-2" width="16" height="16">
+                                    <use xlink:href="#"></use></svg>
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="DanhMucNam.aspx" class="nav-link link-dark">
+                                <svg class="bi me-2" width="16" height="16">
+                                    <use xlink:href="#speedometer2"></use></svg>
+                                ĐỒNG HỒ NAM
+                            </a>
+                        </li>
+                        <li>
+                            <a href="DanhMucNu.aspx" class="nav-link link-dark">
+                                <svg class="bi me-2" width="16" height="16">
+                                    <use xlink:href="#table"></use></svg>
+                                ĐỒNG HỒ NỮ
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="DanhMucPhap.aspx" class="nav-link link-dark">
+                                <svg class="bi me-2" width="16" height="16">
+                                    <use xlink:href="#table"></use></svg>
+                                ĐỒNG HỒ PHÁP
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="DanhMucThuySy.aspx" class="nav-link link-dark">
+                                <svg class="bi me-2" width="16" height="16">
+                                    <use xlink:href="#table"></use></svg>
+                                ĐỒNG HỒ THỤY SỸ
+                            </a>
+                        </li>
+                          <li>
+                            <a href="DanhMucDayDa.aspx" class="nav-link link-dark">
+                                <svg class="bi me-2" width="16" height="16">
+                                    <use xlink:href="#table"></use></svg>
+                                ĐỒNG HỒ DÂY DA
+                            </a>
+                        </li>
+                          <li>
+                            <a href="DanhMucKimLoai.aspx" class="nav-link link-dark">
+                                <svg class="bi me-2" width="16" height="16">
+                                    <use xlink:href="#table"></use></svg>
+                                ĐỒNG HỒ DÂY KIM LOẠI
+                            </a>
+                        </li>
+
+
+                        <li>
+                            <a href="#" class="nav-link link-dark">
+                                <svg class="bi me-2" width="16" height="16">
+                                    <use xlink:href="#grid"></use></svg>
+                                ĐƠN HÀNG
+                            </a>
+                        </li>
+                        
+                    </ul>
+                    <hr>
+                    <div class="dropdown">
+                        <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="HINHANH/logo.JPG" alt="" width="32" height="32" class="rounded-circle me-2">
+                            <strong>ADMIN</strong>
+                        </a>
+                        <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2" style="">
+                            <li><a class="dropdown-item" href="#"><a href="https://localhost:44378/Login.aspx">LOGIN...</a></a></li>
+                            <li><a class="dropdown-item" href="#">Settings</a></li>
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Sign out</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </td>
+            <td>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </td>
+        </tr>
+        <tr class="center">
+            <td colspan="2" class="center">
+                <p>Cửa hàng đồng hồ
+                    <br />
+                    Địa chỉ : Học Viện Tài Chính, Hà Nội<br />
+                    Điện thoại: 0987654321 </p>
+                <div class="container">
+                    <footer class="py-3 my-4">
+                        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+                        </ul>
+                        <p class="text-center text-muted">© 2021 Company, Inc</p>
+                    </footer>
+                </div>
+
+            </td>
+
+        </tr>
+
+    </table>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    </form>
+</body>
+</html>
